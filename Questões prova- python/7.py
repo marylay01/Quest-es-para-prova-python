@@ -23,7 +23,7 @@ for j in range(0, len(a)):
 soma+=a[i]
 media= soma/20
 moda=x
-mediana=a[9]
+mediana=(a[9]+a[10]) /2
 print("a moda dos números é: ", moda)
 print("a média dos números é: ", media)
 print("a mediana dos números é: ", mediana)
