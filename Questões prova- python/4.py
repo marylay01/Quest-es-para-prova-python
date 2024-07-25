@@ -1,21 +1,19 @@
-alfabeto=["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U","V", "W", "X", "Y", "Z"]
-mensagem=input("Digite a mensagem:") 
-chave=int(input("Digite a chave:"))
-mc= ""
+alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+mensagem = input("Digite a mensagem a ser criptografada: ")
+chave = int(input("Digite a chave de criptografia: "))
+criptografia = []
 
 for letra in mensagem:
-    inicio=0
-    fim=len(alfabeto)-1
-    meio=(inicio+fim)//2
-    while inicio<=fim and alfabeto(meio)!=letra:
-        if letra<alfabeto[meio]:
-            fim=meio-1
-        else: 
-            inicio=meio+1
-        meio=(inicio+fim)//2
-    if alfabeto[meio]==letra:
-        codigo = meio+chave
-        if codigo>25:
-            codigo=codigo-26
-        mc==alfabeto[codigo]
-print("Mensagem criptografada", mc)
+    if letra in alfabeto: # Verifica se o caractere está no alfabeto
+        for j in range(len(alfabeto)):
+            if alfabeto[j] == letra:
+                index = j
+        if index >= 23:
+            novo_index = (index + chave) - 25  # Desloca 3 posições no alfabeto, usando módulo para "circular"
+        else: novo_index = (index + chave) 
+        criptografia.append(alfabeto[novo_index])
+    else:
+        criptografia.append(letra)  # Mantém caracteres que não estão no alfabeto, como espaços
+
+criptografado = ''.join(criptografia)
+print("Mensagem criptografada:", criptografado)

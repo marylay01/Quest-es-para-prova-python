@@ -1,37 +1,34 @@
 #Escreva um programa que leia o índice pluviométrico de cada dia do mês de 
 #junho e informe o dia que mais choveu, o dia que menos choveu e as médias 
 #pluviométricas de cada uma das duas quinzenas. 
-dias = 30
-pluvio = []
-for i in range(dias):
-    pluvio.append(float(input(f"Digite a pluviosidade do dia {i + 1} de junho: ")))
-max_pluvio = pluvio[0]
-min_pluvio = pluvio[0]
-dia_mais_chuvoso = 1
-dia_menos_chuvoso = 1
+soma1=0
+soma2=0
+ip = []
+for i in range (1,31):
+    junho = int (input(f"Digite o índice pluviométrico do dia {i}/06: "))
+    if i <= 15:
+        soma1+=junho
+    else:
+        soma2+=junho
+    media=soma1/15
+    media2=soma2/15 
+    ip.append(junho)
+    max = ip[0]
+    min = ip[0]
+    for j in ip:
+        if j > max:
+            max=j
+        elif j < min:
+            min=j
 
-for i in range(1, dias):
-    if pluvio[i] > max_pluvio:
-        max_pluvio = pluvio[i]
-        dia_mais_chuvoso = i + 1
-    if pluvio[i] < min_pluvio:
-        min_pluvio = pluvio[i]
-        dia_menos_chuvoso = i + 1
-
-quinzena1 = 0
-quinzena2 = 0
-
-for i in range(15):
-  quinzena1 += pluvio[i]
-
-for i in range(15, dias):
-   quinzena2 += pluvio[i]
-
-media_primeira_quinzena = quinzena1/ 15
-media_segunda_quinzena =   quinzena2/ 15
-
-# Exibindo os resultados
-print(f"O dia que mais choveu foi o dia {dia_mais_chuvoso} com {max_pluvio}mm")
-print(f"O dia que menos choveu foi o dia {dia_menos_chuvoso} com {min_pluvio}mm")
-print(f"Média pluviométrica da primeira quinzena: {media_primeira_quinzena:.2f}mm")
-print(f"Média pluviométrica da segunda quinzena: {media_segunda_quinzena:.2f}mm")
+for k in range(len(ip)):
+    if ip[k] == max:
+        print(f"A data {k+1}/06 teve o maior indice de chuva.")
+        break 
+for l in range(len(ip)):
+    if ip[l] == min:
+        print(f"A data {l+1}/06 teve o menor indice de chuva.")
+        break 
+       
+print(f"A média pluviométrica dos dias 1 a 15/06  é {media}.")
+print(f"A média pluviométrica dos dias 16 a 30/06 é {media2}")
